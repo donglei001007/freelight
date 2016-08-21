@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="20sp">
+
+    <TextView
+        android:id="@+id/team_no"
+        android:layout_width="10sp"
+        android:layout_height="20sp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:layout_marginLeft="3dip"
+        android:gravity="left"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/team_name"
+        android:layout_width="230sp"
+        android:layout_height="33dp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/team_name_py"
+        android:layout_width="0sp"
+        android:layout_height="33dp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:gravity="left" />
+
+    <ImageButton
+        android:id="@+id/button_team_delete"
+        android:focusable="false"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@drawable/delete" />
+
+    <ImageButton
+        android:id="@+id/button_team_update"
+        android:focusable="false"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="8dip"
+        android:background="@drawable/update" />
+</LinearLayout>

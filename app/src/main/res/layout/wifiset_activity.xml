@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="#014DA1"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/button_wifi_set_cancle"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/top_back"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设定WIFI"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_temp_test"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_layout"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_temp_test"
+            android:layout_width="fill_parent"
+            android:layout_height="134dp"
+            android:gravity="top"
+            android:scrollbars="vertical"
+            android:ellipsize="end"
+            android:text="信息：" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_wifi_set_button"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_ap_control"
+            android:text="@string/button_ap_open"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_style_blue"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="1dp"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_read_client"
+            android:text="@string/button_read_client"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_style_blue"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="3dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_client_List"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_temp_test"
+        android:layout_above="@id/ll_wifi_set_button"
+        android:layout_marginTop="10dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_horizontal"
+            android:textSize="20sp"
+            android:text="信号柱列表："
+            app:bootstrapHeading="h4"
+            app:roundedCorners="true"
+            app:bootstrapBrand="success"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"/>
+
+        <ListView
+            android:id="@+id/listview_client_List"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:listSelector="#FFFFFF"
+            android:background="@null"
+            android:fadingEdge="none" />
+    </LinearLayout>
+
+</RelativeLayout>

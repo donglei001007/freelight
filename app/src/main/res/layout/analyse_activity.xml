@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:dslv="http://schemas.android.com/apk/res-auto/com.ssp365.android.freelight.activity"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
+
+    <LinearLayout
+        android:id="@+id/mode_select"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:background="#ffffff">
+
+        <Spinner
+            android:id="@+id/mode_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/spinner_background"
+            android:prompt="@string/prompt_model"
+            android:spinnerMode="dropdown"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sporter_select"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/mode_select"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:text="请选择运动员：" />
+
+        <ImageButton
+            android:id="@+id/ibt_sporter_select"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|left"
+            android:background="@drawable/select" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_button"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_analyse_table"
+            android:text="@string/analyseActivity_analyse_table"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_style_blue"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="1dp"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_analyse_chart"
+            android:text="@string/analyseActivity_analyse_chart"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_style_blue"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="2dp"/>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_chenji_zhonglei"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="3dp"
+        android:layout_above="@id/lay_button"
+        android:gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_total_chenji"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:text="平均成绩"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rb_detail_chenji"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="详细成绩"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/lay_analyse"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_above="@id/rg_chenji_zhonglei"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/analyse_start"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/lb_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:text="~" />
+
+        <TextView
+            android:id="@+id/analyse_end"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/lb_analyse_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:text="自定义期间和种类："
+        android:layout_above="@id/lay_analyse"
+        android:gravity="center_vertical|center_horizontal"
+        app:bootstrapHeading="h4"
+        app:roundedCorners="true"
+        app:bootstrapBrand="success"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <com.mobeta.android.dslv.DragSortListView
+        android:id="@+id/sporterList"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/lb_analyse_period"
+        android:layout_below="@+id/lb_shunxu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:background="@null"
+        android:fadingEdge="none"
+        android:listSelector="#FFFFFF"
+        android:padding="3dp"
+        dslv:click_remove_id="@id/click_remove"
+        dslv:collapsed_height="1px"
+        dslv:drag_enabled="true"
+        dslv:drag_handle_id="@id/drag_handle"
+        dslv:drag_scroll_start="0.33"
+        dslv:drag_start_mode="onDown"
+        dslv:float_alpha="0.6"
+        dslv:remove_enabled="true"
+        dslv:remove_mode="clickRemove"
+        dslv:slide_shuffle_speed="0.3" />
+
+    <TextView
+        android:id="@+id/lb_shunxu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sporterList"
+        android:layout_below="@+id/sporter_select"
+        android:layout_marginLeft="20dp"
+        android:text="顺 序"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/lb_sporter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lb_shunxu"
+        android:layout_alignBottom="@+id/lb_shunxu"
+        android:layout_marginLeft="80dp"
+        android:layout_toRightOf="@+id/lb_shunxu"
+        android:text="运动员"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff000000"
+        android:textSize="20sp" />
+
+</RelativeLayout>

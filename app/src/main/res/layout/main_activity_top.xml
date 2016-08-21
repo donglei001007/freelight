@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="#014DA1"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/id_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/id_top_wifi"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:text="wifi"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:layout_alignTop="@+id/id_top_title"
+            android:src="@drawable/ic_wifi_tethering_black_36dp"
+            android:layout_marginRight="6dp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/id_add_sporter"
+            android:src="@drawable/ic_person_add_black_36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:clickable="false"/>
+
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/id_top_item_select"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_reorder_black_36dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="1dp"
+            app:bootstrapBrand="secondary"
+            app:fontAwesomeIcon="fa_android"
+            app:typicon="ty_anchor"
+            app:bootstrapText="{fa_align_justify}"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

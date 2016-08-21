@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activitybackgroup"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="#014DA1"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/button_sporter_cancle"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设定运动员"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/button_sporter_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:text="确定"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/RelativeLayout1"
+        android:layout_below="@+id/RelativeLayout1"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/information_backgroud">
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="身　高："
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ImageView03"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/TextView03"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/register_segmentation" />
+
+        <TextView
+            android:id="@+id/TextView05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TextView03"
+            android:layout_below="@+id/ImageView03"
+            android:layout_marginTop="5dp"
+            android:text="体　重："
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/sporter_tizhong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TextView05"
+            android:layout_alignLeft="@+id/sporter_shengao"
+            android:layout_alignRight="@+id/sporter_shengao"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#bababa" />
+
+        <EditText
+            android:id="@+id/sporter_shengao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ImageView03"
+            android:layout_toLeftOf="@+id/TextView06"
+            android:layout_toRightOf="@+id/TextView03"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#bababa">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextView06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sporter_tizhong"
+            android:layout_alignRight="@+id/TextView04"
+            android:text="（KG）"
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/TextView03"
+            android:layout_alignBottom="@+id/TextView03"
+            android:layout_alignRight="@+id/ImageView03"
+            android:layout_marginRight="11dp"
+            android:text="（CM）"
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/rl_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/information_backgroud"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:text="姓　名："
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/sporter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_toRightOf="@+id/textView1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="请输入姓名"
+            android:inputType="textPersonName"
+            android:textColor="#bababa"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/register_segmentation" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/imageView1"
+            android:layout_marginTop="15dp"
+            android:text="所属队："
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/sporter_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TextView01"
+            android:layout_below="@+id/imageView1"
+            android:layout_toRightOf="@+id/textView1" />
+
+        <ImageView
+            android:id="@+id/ImageView04"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/TextView01"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/register_segmentation" />
+
+        <ImageButton
+            android:id="@+id/sporter_xinbie_nv"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignRight="@+id/ImageView04"
+            android:layout_below="@+id/ImageView04"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#00000000"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/register_female_normal" />
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/sporter_xinbie_nv"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/register_segmentation" />
+
+        <TextView
+            android:id="@+id/sporter_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/TextView02"
+            android:layout_alignBottom="@+id/TextView02"
+            android:layout_alignRight="@+id/sporter_name"
+            android:layout_toRightOf="@+id/textView1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="请选择出生年月日"
+            android:inputType="date"
+            android:textColor="#bababa"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/sporter_xinbie_nan"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignLeft="@+id/ImageView01"
+            android:layout_alignTop="@+id/sporter_xinbie_nv"
+            android:background="#00000000"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/register_male_normal" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TextView01"
+            android:layout_below="@+id/ImageView01"
+            android:layout_marginTop="14dp"
+            android:text="生　日："
+            android:textColor="#818181"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/sporter_xingbie_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/relativeLayout2"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginRight="58dp"
+        android:layout_marginTop="54dp"
+        android:text="TextView"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">自由光</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">辅助教练系统</string>
+
+    <!-- common -->
+    <string-array name="xingbie_value">
+        <item>" "</item>
+        <item>"0"</item>
+        <item>"1"</item>
+    </string-array>
+    <string-array name="xingbie_text">
+        <item>" "</item>
+        <item>"男"</item>
+        <item>"女"</item>
+    </string-array>
+
+    <string name="bt_ok">确定</string>
+    <string name="bt_cancel">返回</string>
+    <string name="day_err">期间有误，终了日小于开始日.</string>
+    <string name="search_err">没有相关成绩，请重新选择.</string>
+
+    <!-- CertificationActivity -->
+    <string name="certification_label">验证码</string>
+    <string name="certification_hint">第一次使用，请输入验证码</string>
+    <string name="bt_certification">验证</string>
+    <string name="bt_exit">结束</string>
+    <string name="msg_no_certification">没有输入验证码，请重新输入验证码。</string>
+    <string name="msg_certification_error">验证码错误，请重新输入验证码。</string>
+
+    <!-- MainActivity -->
+    <string name="set">设定</string>
+    <string name="analyse">分析</string>
+    <string name="msg_csv_out_ok">数据导出成功！</string>
+    <string name="msg_csv_out_inf">没有相关数据！</string>
+    <string name="msg_csv_out_ng">数据导出失败，请重试！</string>
+
+    <!-- TeamActivity -->
+    <string name="title_team_activity">队伍</string>
+    <string name="team_list">队伍列表</string>
+    <string name="team_add">添加队伍</string>
+    <string name="team_ok">确定</string>
+    <string name="team_delete">删除</string>
+    <string name="team_update">修改</string>
+
+    <item name="DIALOG_TAT_TEAM_NO" type="id"></item>
+    <item name="DIALOG_TAT_TEAM_NAME" type="id"></item>
+
+    <!-- ModelActivity -->
+    <string name="title_model_activity">测试库</string>
+
+    <item name="DIALOG_TAT_MODEL_NO" type="id"></item>
+    <item name="DIALOG_TAT_MODEL_NAME" type="id"></item>
+
+    <!-- SporterActivity -->
+    <string name="title_sporter_activity">运动员</string>
+    <string name="prompt_xingbie">请选择性别</string>
+    <string name="prompt_team">请选择队伍</string>
+
+    <item name="DIALOG_TAT_SPORTER" type="id"></item>
+
+    <!-- BluetoothChat -->
+    <string name="startTrain">开始测试</string>
+    <string name="loopTrain">多人测试</string>
+    <string name="not_connected">未能连接上蓝牙设备</string>
+    <string name="bt_not_enabled_leaving">本手机没有蓝牙设备，不能使用蓝牙功能</string>
+    <string name="title_connecting">连接中...</string>
+    <string name="title_connected_to">控制类型: </string>
+    <string name="title_not_connected">未连接</string>
+    <!-- <string name="bluetoothchat_err_notconnect">未连接蓝牙，请点击菜单键连接蓝牙</string> -->
+    <string name="bluetoothchat_err_notconnect">WIFI热点未开启，请点击wifi键设置WIFI</string>
+    <string name="model_err">项目没有选择，请选择项目。</string>
+    <string name="sporter_err">运动员没有选择，请选择运动员。</string>
+    <string name="point_count_err1">项目需要测试柱</string>
+    <string name="point_count_err2">个，目前只有</string>
+    <string name="point_count_err3">个，请重新确认测试柱。</string>
+    <string name="point_connect_err">号测试柱连接中断，请确认。</string>
+    <string name="prompt_model">请选择项目</string>
+    <string name="prompt_sporter">请选择运动员</string>
+    <string name="bluetoothChat_list_head_no">顺序</string>
+    <string name="bluetoothChat_list_sporter_no">编号</string>
+    <string name="bluetoothChat_list_sporter_name">运动员</string>
+    <string name="connect_type_hand">手动控制</string>
+    <string name="connect_type_auto">自动控制</string>
+
+    <!-- DeviceListActivity -->
+    <string name="scanning">搜索中...</string>
+    <string name="select_device">选择连接的蓝牙设备</string>
+    <string name="none_paired">没有可配对设备</string>
+    <string name="none_found">没有找到蓝牙设备</string>
+    <string name="title_paired_devices">已配对设备</string>
+    <string name="title_other_devices">其它可用设备</string>
+    <string name="button_scan">搜索蓝牙设备</string>
+
+    <!-- Options Menu -->
+    <string name="connect">搜索蓝牙</string>
+    <string name="discoverable">打开蓝牙</string>
+
+    <!-- stopwatch -->
+    <string name="StopWatchActivity_title">秒表</string>
+    <string name="stopwatch_start">开始</string>
+    <string name="stopwatch_user">用户</string>
+    <string name="stopwatch_point">点</string>
+    <string name="stopwatch_pause">暂停</string>
+    <string name="stopwatch_reset">重置</string>
+    <string name="stopWatch">停表</string>
+    <string name="clickWatch">计时</string>
+
+    <!-- analyseActivity -->
+    <string name="analyseActivity_title">图表分析</string>
+    <string name="analyseActivity_analyse_table">表格分析</string>
+    <string name="analyseActivity_analyse_chart">曲线分析</string>
+    <string name="search_count_err">最多只能分析30人的成绩，请重新选择.</string>
+
+    <!-- csvActivity -->
+    <string name="csvActivity_title">数据导出</string>
+    <string name="csvActivity_csv_out">数据导出</string>
+    <string name="output_inf">是否确认导出成绩信息后自动删除相应的成绩?</string>
+
+    <!-- charActivity -->
+    <string name="title_charActivity">成绩曲线图</string>
+
+    <!-- ChenjiChartActivity -->
+    <string name="title_chenjiChartActivity">成绩曲线图</string>
+
+    <!-- ChenjiListActivity -->
+    <string name="title_chenjiListActivity">成绩表格</string>
+
+    <!-- wifiset_activity -->
+    <string name="title_wifisetActivity">WiFi设置</string>
+    <string name="button_ap_open">打开热点</string>
+    <string name="button_ap_close">关闭热点</string>
+    <string name="button_read_client">扫描信号柱</string>
+
+    <!-- SettingActivity -->
+    <string name="SettingActivity_title">设定</string>
+    <string name="msg_cancle_qestion">是否放弃修改的设定？</string>
+    <string name="msg_ok_qestion">如果改为手动控制，WIFI热点将关闭，是否关闭？</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

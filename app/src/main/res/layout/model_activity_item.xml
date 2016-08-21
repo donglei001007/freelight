@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="20sp">
+
+    <CheckBox
+        android:id="@+id/model_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip" />
+
+    <ImageView
+        android:id="@+id/model_Img"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:visibility="gone"
+        android:layout_gravity="center|left" />
+
+    <TextView
+        android:id="@+id/model_no"
+        android:layout_width="0sp"
+        android:layout_height="20sp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:layout_marginLeft="3dip"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/model_name"
+        android:layout_width="230sp"
+        android:layout_height="33dp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/model_name_py"
+        android:layout_width="0sp"
+        android:layout_height="33dp"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:gravity="left" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/mm_submenu" />
+
+    <ImageButton
+        android:id="@+id/button_model_delete"
+        android:focusable="false"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@drawable/delete" />
+
+    <ImageButton
+        android:id="@+id/button_model_update"
+        android:focusable="false"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="8dip"
+        android:background="@drawable/update" />
+</LinearLayout>
