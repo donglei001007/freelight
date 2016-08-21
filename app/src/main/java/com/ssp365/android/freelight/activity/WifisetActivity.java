@@ -392,12 +392,16 @@ public class WifisetActivity extends Activity implements OnClickListener {
             case R.id.button_read_client:
                 if (mWifiService != null) {
                     button_read_client.setEnabled(false);
-                    //删除断开了的连接
-                    for (int i = mWifiService.clientConnectedThreadList.size() - 1; i >= 0; i--) {
-                        if (!mWifiService.clientConnectedThreadList.get(i).connected) {
-                            mWifiService.clientConnectedThreadList.get(i).cancel();
-                            mWifiService.clientConnectedThreadList.remove(i);
+                    try {
+                        //删除断开了的连接
+                        for (int i = mWifiService.clientConnectedThreadList.size() - 1; i >= 0; i--) {
+                            if (!mWifiService.clientConnectedThreadList.get(i).connected) {
+                                mWifiService.clientConnectedThreadList.get(i).cancel();
+                                mWifiService.clientConnectedThreadList.remove(i);
+                            }
                         }
+                    }catch (Exception e){
+                        Log.e(TAG, "客户端连接List丢失问题发生（可能源于异常的指令造成连接中断）", e);
                     }
                     flushList();
                     try {

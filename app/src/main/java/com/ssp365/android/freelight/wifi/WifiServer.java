@@ -6,6 +6,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WifiLock;
+import android.util.Log;
 
 import com.ssp365.android.freelight.activity.WifisetActivity.ClientList;
 import com.ssp365.android.freelight.common.CharHelper;
@@ -128,6 +129,7 @@ public class WifiServer {
         //关闭所有客户端
         for (int i = clientConnectedThreadList.size() - 1; i >= 0; i--) {
             if (clientConnectedThreadList.get(i) != null) {
+                // 如果线程已经结束，释放线程资源
                 clientConnectedThreadList.get(i).cancel();
             }
             clientConnectedThreadList.remove(i);
@@ -579,6 +581,7 @@ public class WifiServer {
                         return;
                     }
                 } catch (Exception e) {
+                    Log.e("freelight", "客户端连接报错." + e);
                     DebugLog.debug(context, "ConnectedThread disconnected：" + e);
                     connected = false;
                     cancel();
@@ -659,7 +662,7 @@ public class WifiServer {
                         mmOutStream.write(send);
                         mmOutStream.flush();
                         // 给客户端发送信息（写日志）
-                        connectionWrite(no, msg);
+                        mHandler.obtainMessage(GlobalConstants.STATE_WIFI_WRITE, -1, no, msg).sendToTarget();
 
                         DebugLog.debug(context, "给" + no + "号柱发送信息：" + msg);
                     } else {
@@ -689,6 +692,7 @@ public class WifiServer {
                     // 中断线程
                     this.interrupt();
                 } catch (Exception e) {
+
                     DebugLog.debug(context, "Exception during write：" + e);
                     connected = false;
                     // 断开连接

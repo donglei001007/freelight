@@ -67,6 +67,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 开启打印日志处理
+        DebugLog.openDebugFile(MainActivity.this);
         super.onCreate(savedInstanceState);
         // android-bootstrap
         TypefaceProvider.registerDefaultIconSets();
@@ -105,8 +107,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         if (mApplication.getmWifiService() != null) {
             mApplication.getmWifiService().stop();
         }
-        // 关闭打印处理
-        DebugLog.closeOutputDebugFile();
+        // 关闭打印日志处理
+        DebugLog.closeDebugFile();
         // 中止整个程序
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);

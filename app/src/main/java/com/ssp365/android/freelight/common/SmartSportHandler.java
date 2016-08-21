@@ -92,9 +92,13 @@ public class SmartSportHandler extends Handler {
                         Toast.makeText(wifisetActivity.getApplicationContext(), msg.arg1 + "号信号柱连接断开！", Toast.LENGTH_SHORT).show();
                         //2016/03/27 chenxy add start
                         int clientNo = (Integer)msg.arg1;
-                        Log.i("STATE_WIFI_LOST", "WifiServer.STATE_WIFI_LOST:"+clientNo);
-                        application.getmWifiService().clientSocketList.remove(clientNo-1);
-                        application.getmWifiService().clientConnectedThreadList.remove(clientNo - 1);
+                        Log.i("STATE_WIFI_LOST", "WifiServer.STATE_WIFI_LOST:" + clientNo);
+                        try{
+                            application.getmWifiService().clientSocketList.remove(clientNo-1);
+                            application.getmWifiService().clientConnectedThreadList.remove(clientNo - 1);
+                        }catch(Exception e){
+                            // 防止异常终端连接的时候，出现数组越界的问题
+                        }
                         //2016/03/27 chenxy add end
                     }
                 }
