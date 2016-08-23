@@ -3,7 +3,7 @@ package com.ssp365.android.freelight.common;
 import android.util.Log;
 
 import com.ssp365.android.freelight.model.Parameter;
-import com.ssp365.android.freelight.wifi.WifiServer.ConnectedThread;
+import com.ssp365.android.freelight.wifi.ConnectedThread;
 
 import java.util.Random;
 
@@ -56,7 +56,7 @@ public class MessageHelper {
         for(int i=0;i<mApplication.getHandler().getWifisetActivity().mWifiService.clientConnectedThreadList.size();i++){
             //连接正常时发送信号
             if(mApplication.getHandler().getWifisetActivity().mWifiService.clientConnectedThreadList.get(i).connected){
-                int ponintNo = ((ConnectedThread)mApplication.getHandler().getWifisetActivity().mWifiService.clientConnectedThreadList.get(i)).no;
+                int ponintNo = ((ConnectedThread)mApplication.getHandler().getWifisetActivity().mWifiService.clientConnectedThreadList.get(i)).getLightNo();
                 Log.i(TAG, "ponintNo:"+ponintNo);
                 Log.i(TAG, "no:"+no);
                 if(ponintNo==no){

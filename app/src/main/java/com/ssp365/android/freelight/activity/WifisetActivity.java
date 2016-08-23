@@ -29,7 +29,7 @@ import com.ssp365.android.freelight.common.SmartSportApplication;
 import com.ssp365.android.freelight.common.SmartSportHandler;
 import com.ssp365.android.freelight.model.Parameter;
 import com.ssp365.android.freelight.wifi.WifiServer;
-import com.ssp365.android.freelight.wifi.WifiServer.ConnectedThread;
+import com.ssp365.android.freelight.wifi.ConnectedThread;
 
 import java.net.Socket;
 import java.util.ArrayList;
@@ -139,7 +139,7 @@ public class WifisetActivity extends Activity implements OnClickListener {
                 for (int i = 0; i < mWifiService.clientConnectedThreadList.size(); i++) {
                     ClientList socketClient = new ClientList();
                     socketClient.value_no = i + 1 + "";
-                    mWifiService.clientConnectedThreadList.get(i).no = i + 1;
+                    mWifiService.clientConnectedThreadList.get(i).setLightNo(i + 1);
                     if (mWifiService.clientConnectedThreadList.get(i).connected) {
                         socketClient.value_client_state = Parameter.CONNECT_STATE_CONNECTED;
                     } else {
@@ -300,7 +300,7 @@ public class WifisetActivity extends Activity implements OnClickListener {
                 //2016/03/27 chenxy upd start
                 //MessageHelper.sendMsg(mApplication, Parameter.CONNECT_INF_CHECK, true);
                 for(int i=0;i<mWifiService.clientConnectedThreadList.size();i++){
-                    int ponintNo = ((ConnectedThread)mWifiService.clientConnectedThreadList.get(i)).no;
+                    int ponintNo = ((ConnectedThread)mWifiService.clientConnectedThreadList.get(i)).getLightNo();
                     if(ponintNo==1){
                         MessageHelper.sendMsg(mApplication, ponintNo, Parameter.CONNECT_INF_POINT_1);
                     }else if(ponintNo==2){
