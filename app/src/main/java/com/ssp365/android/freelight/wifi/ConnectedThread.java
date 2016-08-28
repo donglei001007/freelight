@@ -30,7 +30,7 @@ public class ConnectedThread extends Thread {
     public boolean connected = true;
     // 当前发送信号的序号
     public int sendMsgIndex = -1;
-    Vector<String> vecMsg = new Vector<String>();
+    Vector<String> vecMsg = new Vector<>();
     String endStr = "";
     // 灯柱编号
     private int lightNo;

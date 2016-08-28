@@ -15,45 +15,52 @@ import com.ssp365.android.freelight.common.SmartSportApplication;
 import com.ssp365.android.freelight.common.SmartSportHandler;
 import com.ssp365.android.freelight.model.Parameter;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * WIFI热点服务器
+ *
+ * @author chenxy 2015/09/09
+ *         donglei 2016/08/28
+ * @version 1.0.0.1
+ */
 public class WifiServer {
 
-    private static final String TAG = "WifiServer";
+    // APP程序句柄
     public final SmartSportHandler mHandler;
-    //全局变量
+    // 全局变量
     public SmartSportApplication mApplication = null;
     // 客户端socket列表
-    public ArrayList<ClientList> clientSocketList = new ArrayList<ClientList>();
+    public ArrayList<ClientList> clientSocketList = new ArrayList<>();
     public ArrayList<ConnectedThread> clientConnectedThreadList = new ArrayList<>();
-    //定义一个WifiLock
+    // 定义一个WifiLock（防止锁屏时候，android自动断开wifi连接）
     WifiLock mWifiLock;
-    //定义WifiManager对象
+    // 定义WifiManager对象
     private WifiManager mWifiManager;
-    //定义WifiInfo对象
+    // 定义WifiInfo对象
     private WifiInfo mWifiInfo;
-    //网络连接列表
-    private List<WifiConfiguration> mWifiConfiguration;
-    //监听客户端用socket
+    // 监听客户端用socket
     private ServerSocket serverSocket = null;
     private AcceptThread mAcceptThread = null;
     private Context context = null;
     // wifiserver状态
     private int mState;
 
+    /**
+     * 构造函数
+     *
+     * @param context     上下文
+     * @param application Application对象
+     */
     public WifiServer(Context context, SmartSportApplication application) {
         // 获得程序参数
         this.mApplication = application;
         // 获得上下文
         this.context = context;
         // 获得事件处理器
-        mHandler = mApplication.getHandler();
+        this.mHandler = mApplication.getHandler();
         // 设定当前状态为什么也没做
         mState = GlobalConstants.STATE_WIFI_NONE;
         // 取得WifiManager对象
@@ -64,7 +71,7 @@ public class WifiServer {
         // WIFI信息打印
         DhcpInfo dhcpInfo = mWifiManager.getDhcpInfo();
         StringBuilder sb = new StringBuilder();
-        sb.append("网络信息：");
+        sb.append("WIFIAP服务器创建，网络信息：");
         sb.append("\nipAddress：" + CharHelper.intToIp(dhcpInfo.ipAddress));
         sb.append("\nnetmask：" + CharHelper.intToIp(dhcpInfo.netmask));
         sb.append("\ngateway：" + CharHelper.intToIp(dhcpInfo.gateway));
@@ -76,7 +83,6 @@ public class WifiServer {
         sb.append("\nIpAddress：" + CharHelper.intToIp(mWifiInfo.getIpAddress()));
         sb.append("\nMacAddress：" + mWifiInfo.getMacAddress());
         DebugLog.debug(context, sb.toString());
-
     }
 
     /**
@@ -95,15 +101,18 @@ public class WifiServer {
         // 重新初始化所有连接的客户端
         for (int i = 0; i < clientConnectedThreadList.size(); i++) {
             if (clientConnectedThreadList.get(i) != null) {
+                // 关闭客户端连接线程
                 clientConnectedThreadList.get(i).cancel();
             }
+            // 移除客户端
             clientConnectedThreadList.remove(i);
         }
+        // 初始化客户端列表
         clientConnectedThreadList = new ArrayList<>();
 
         // 启动监听进程
         if (mAcceptThread == null) {
-            mAcceptThread = new AcceptThread();
+            mAcceptThread = new AcceptThread(this);
             mAcceptThread.start();
         }
         setState(GlobalConstants.STATE_WIFI_START);
@@ -115,14 +124,13 @@ public class WifiServer {
      * Stop all threads
      */
     public synchronized void stop() {
-
-        //关闭监听进程
+        // 关闭监听进程
         if (mAcceptThread != null) {
             mAcceptThread.cancel();
             mAcceptThread = null;
         }
 
-        //关闭所有客户端
+        // 关闭所有客户端
         for (int i = clientConnectedThreadList.size() - 1; i >= 0; i--) {
             if (clientConnectedThreadList.get(i) != null) {
                 // 如果线程已经结束，释放线程资源
@@ -131,42 +139,52 @@ public class WifiServer {
             clientConnectedThreadList.remove(i);
         }
 
-        //关闭热点
+        // 关闭热点
         setWifiApEnabled(false);
-
+        // 设置wifi状态
         setState(GlobalConstants.STATE_WIFI_NONE);
-        //发送热点关闭信息
+        // 发送热点关闭信息
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_NONE, -1, -1).sendToTarget();
     }
 
-    /*
+    /**
      * 设置WIFI状态
      */
     private synchronized void setState(int state) {
         mState = state;
     }
 
-    // 发送连接断开信号
+    /**
+     * 发送连接断开信号
+     */
     private void connectionLost(int no) {
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_LOST, no, -1).sendToTarget();
     }
 
-    //发送通信失败信号
+    /**
+     * 发送通信失败信号
+     */
     private void connectionFail(int no) {
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_CONNECT_FAILE, no, -1).sendToTarget();
     }
 
-    //发送读取信息信号
+    /**
+     * 发送读取信息信号
+     */
     private void connectionRead(int no, String str) {
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_READ, -1, no, str).sendToTarget();
     }
 
-    //发送写入信息信号
+    /**
+     * 发送写入信息信号
+     */
     private void connectionWrite(int no, String msg) {
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_WRITE, -1, no, msg).sendToTarget();
     }
 
-    //处理灯柱的通过时间
+    /**
+     * 处理灯柱的通过时间
+     */
     private void connectionClick(int no, String str) {
         mHandler.obtainMessage(GlobalConstants.STATE_WIFI_CLICK, -1, no, str).sendToTarget();
     }
@@ -186,13 +204,13 @@ public class WifiServer {
         try {
             // WIFI设定
             WifiConfiguration apConfig = new WifiConfiguration();
-            //2016/03/27 chenxy update start
+            // 2016/03/27 chenxy update start
             apConfig.SSID = Parameter.WIFI_SSID;
-            //2016/03/27 chenxy update end
+            // 2016/03/27 chenxy update end
             apConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-            //2016/03/27 chenxy update start
+            // 2016/03/27 chenxy update start
             apConfig.preSharedKey = Parameter.WIFI_SHARED_KEY;
-            //2016/03/27 chenxy update end
+            // 2016/03/27 chenxy update end
 
             // 关闭热点前，先解开AP锁（AP锁可以防止黑屏时WIFI自动关闭）
             if (!enabled) {
@@ -281,107 +299,23 @@ public class WifiServer {
         mWifiLock.acquire();
     }
 
-    /**
-     * WIFI监听进程
-     */
-    private class AcceptThread extends Thread {
-        boolean acceptFlag = true;
+    public Context getContext() {
+        return context;
+    }
 
-        /**
-         * 监听进程初始化
-         */
-        public AcceptThread() {
-            try {
-                DebugLog.debug(context, "AcceptThread init start");
+    public WifiManager getmWifiManager() {
+        return mWifiManager;
+    }
 
-                serverSocket = new ServerSocket(Parameter.WIFI_SERVER_PORT);
-                SocketAddress address = null;
-                if (!serverSocket.isBound()) {
-                    serverSocket.bind(address, Parameter.WIFI_SERVER_PORT_BACKUP);
-                }
-                DebugLog.debug(context, "AcceptThread_serverSocket.getLocalSocketAddress()：" + serverSocket.getLocalSocketAddress());
-                DebugLog.debug(context, "AcceptThread_serverSocket.getReuseAddress()：" + serverSocket.getReuseAddress());
+    public ArrayList<ClientList> getClientSocketList() {
+        return clientSocketList;
+    }
 
-                DhcpInfo info = mWifiManager.getDhcpInfo();
-                DebugLog.debug(context, "AcceptThread_info.serverAddress：" + info.serverAddress);
+    public ArrayList<ConnectedThread> getClientConnectedThreadList() {
+        return clientConnectedThreadList;
+    }
 
-                DebugLog.debug(context, "AcceptThread init end");
-            } catch (IOException e) {
-                DebugLog.debug(context, "AcceptThread init e:" + e.toString());
-                e.printStackTrace();
-            }
-        }
-
-        /**
-         * 监听进程启动
-         */
-        public void run() {
-            Socket socket = null;
-            try {
-                while (acceptFlag) {
-                    DebugLog.debug(context, "AcceptThread start");
-
-                    // 将每一个连接到该服务器的客户端，加到List中
-                    socket = serverSocket.accept();
-
-                    //2016/03/27 chenxy add start
-                    // 最多添加到4个客户端，如果超过4个的话，关闭
-                    if (clientSocketList.size() >= 4) {
-                        DebugLog.debug(context, "客户端达到4个，不再添加新的客户端");
-                        socket.close();
-                        continue;
-                    }
-                    //2016/03/27 chenxy add end
-
-                    ClientList socketClient = new ClientList();
-                    // 顺序取下一个灯柱编号
-                    socketClient.value_no = String.valueOf(clientSocketList.size() + 1);
-                    socketClient.socket = socket;
-                    clientSocketList.add(socketClient);
-
-                    // 每一个连接到服务器的客户端，服务器开启一个新的线程来处理
-                    ConnectedThread connectedThread = new ConnectedThread(socket, clientSocketList.size(), mHandler);
-                    connectedThread.start();
-                    clientConnectedThreadList.add(connectedThread);
-
-                    DebugLog.debug(context, "AcceptThread_serverSocket.getLocalSocketAddress()：" + serverSocket.getLocalSocketAddress());
-                    DebugLog.debug(context, "AcceptThread_socket.getLocalSocketAddress()：" + socket.getLocalSocketAddress());
-                    DebugLog.debug(context, "AcceptThread_socket.getRemoteSocketAddress()：" + socket.getRemoteSocketAddress());
-
-                    // 发送客户端连接信息
-                    mHandler.obtainMessage(GlobalConstants.STATE_WIFI_ACCEPT, -1, -1).sendToTarget();
-                }
-            } catch (IOException ee) {
-                //强行关闭时不需要打印信息
-                if (acceptFlag) {
-                    mHandler.obtainMessage(GlobalConstants.STATE_WIFI_ACCEPT_FAILE, -1, -1, ee.toString()).sendToTarget();
-                    DebugLog.debug(context, "AcceptThread run Exception:" + ee);
-                }
-                return;
-            }
-        }
-
-        //监听进程关闭
-        public void cancel() {
-            try {
-                //关闭所有客户端进程
-                if (clientConnectedThreadList != null && clientConnectedThreadList.size() > 0) {
-                    for (int i = 0; i < clientConnectedThreadList.size(); i++) {
-                        if (clientConnectedThreadList.get(i) != null) {
-                            clientConnectedThreadList.get(i).cancel();
-                        }
-                        clientConnectedThreadList.remove(i);
-                    }
-                }
-                //关闭监听进程
-                if (serverSocket != null) {
-                    acceptFlag = false;
-                    serverSocket.close();
-                }
-                this.interrupt();
-            } catch (IOException e) {
-                DebugLog.debug(context, "AcceptThread cancel Exception:" + e);
-            }
-        }
+    public SmartSportHandler getmHandler() {
+        return mHandler;
     }
 }
