@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -284,16 +285,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         // 切换内容区域
         switch (i) {
             case 0:
-                mTabWeixin.setBackgroundColor(getResources().getColor(R.color.black));
+                mTabWeixin.setBackgroundColor(Color.parseColor("#C3C3C3"));
                 break;
             case 1:
-                mTabFrd.setBackgroundColor(getResources().getColor(R.color.black));
+                mTabFrd.setBackgroundColor(Color.parseColor("#C3C3C3"));
                 break;
             case 2:
-                mTabAddress.setBackgroundColor(getResources().getColor(R.color.black));
+                mTabAddress.setBackgroundColor(Color.parseColor("#C3C3C3"));
                 break;
             case 3:
-                mTabSettings.setBackgroundColor(getResources().getColor(R.color.black));
+                mTabSettings.setBackgroundColor(Color.parseColor("#C3C3C3"));
                 break;
         }
     }
@@ -302,10 +303,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
      * 切换图片至暗色
      */
     private void resetImgs() {
-        mTabWeixin.setBackgroundColor(getResources().getColor(R.color.color1));
-        mTabFrd.setBackgroundColor(getResources().getColor(R.color.color1));
-        mTabAddress.setBackgroundColor(getResources().getColor(R.color.color1));
-        mTabSettings.setBackgroundColor(getResources().getColor(R.color.color1));
+        mTabWeixin.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mTabFrd.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mTabAddress.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mTabSettings.setBackgroundColor(Color.parseColor("#FFFFFF"));
     }
 
     @Override

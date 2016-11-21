@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="训练"
-            android:textColor="@color/whites"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -53,7 +53,7 @@
             android:layout_marginLeft="3dp"
             android:hint="16"
             android:text="测试"
-            android:textColor="@color/whites"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="分析"
-            android:textColor="@color/whites"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="更多"
-            android:textColor="@color/whites"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
